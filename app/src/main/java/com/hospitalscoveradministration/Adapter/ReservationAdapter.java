@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.hospitalscoveradministration.Interfaces.AdapterCategoryInterface;
-import com.hospitalscoveradministration.Model.CategoryData;
+
 import com.hospitalscoveradministration.Model.ReservationData;
 import com.hospitalscoveradministration.R;
 
@@ -37,7 +37,7 @@ public class ReservationAdapter  extends RecyclerView.Adapter<ReservationAdapter
     @NonNull
     @Override
     public ReservationAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(context).inflate(R.layout., viewGroup, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.layout_reservation, viewGroup, false);
         return new ReservationAdapter.ViewHolder(view);
     }
 //
