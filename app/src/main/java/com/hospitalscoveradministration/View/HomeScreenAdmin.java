@@ -19,9 +19,10 @@ import com.hospitalscoveradministration.R;
 
 public class HomeScreenAdmin extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    public static User currentUser;
     public TextView hospital_name_nav;
     public TextView hospital_email_nav;
+
+    public static User currentUser=null;
 
 
     @Override
@@ -49,9 +50,14 @@ public class HomeScreenAdmin extends AppCompatActivity
         ReservationsFragment reservationsFragment = new ReservationsFragment();
         addFragment(reservationsFragment, reservationsFragment.reservationsTag);
 
+
         currentUser = (User) getIntent().getSerializableExtra("user");
         hospital_name_nav.setText(currentUser.getData().name);
         hospital_email_nav.setText(currentUser.getData().name + "@gmail.com");
+
+        if(currentUser==null)
+            currentUser = (User) getIntent().getSerializableExtra("user");
+
 
 
     }
