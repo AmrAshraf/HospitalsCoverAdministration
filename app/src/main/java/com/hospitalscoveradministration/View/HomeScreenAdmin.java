@@ -11,6 +11,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.hospitalscoveradministration.Model.User;
 import com.hospitalscoveradministration.R;
@@ -18,6 +20,9 @@ import com.hospitalscoveradministration.R;
 public class HomeScreenAdmin extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     public static User currentUser;
+    public TextView hospital_name_nav;
+    public TextView hospital_email_nav;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,11 +40,18 @@ public class HomeScreenAdmin extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View hView =  navigationView.getHeaderView(0);
+        View hView2 =  navigationView.getHeaderView(1);
+        hospital_name_nav = (TextView)hView.findViewById(R.id.hospital_name_nav);
+
+        hospital_email_nav=(TextView)hView.findViewById(R.id.hospital_email_nav);
 
         ReservationsFragment reservationsFragment = new ReservationsFragment();
         addFragment(reservationsFragment, reservationsFragment.reservationsTag);
 
         currentUser = (User) getIntent().getSerializableExtra("user");
+        hospital_name_nav.setText(currentUser.getData().name);
+        hospital_email_nav.setText(currentUser.getData().name + "@gmail.com");
 
 
     }
@@ -61,10 +73,7 @@ public class HomeScreenAdmin extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.basic_data) {
-            BasicDataFragment basicDataFragment = new BasicDataFragment();
-            addFragment(basicDataFragment, basicDataFragment.basicDataTag);
-        } else if (id == R.id.resources) {
+       if (id == R.id.resources) {
             ResourcesFragment resourcesFragment = new ResourcesFragment();
             addFragment(resourcesFragment, resourcesFragment.resourcesTag);
         } else if (id == R.id.reservations) {

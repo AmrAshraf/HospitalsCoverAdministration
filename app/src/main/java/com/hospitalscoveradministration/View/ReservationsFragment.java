@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hospitalscoveradministration.Adapter.ReservationAdapter;
@@ -30,6 +31,8 @@ import com.hospitalscoveradministration.webServicse.RserveationResponse;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.hospitalscoveradministration.View.HomeScreenAdmin.currentUser;
+
 
 public class ReservationsFragment extends Fragment implements AdapterCategoryInterface {
 
@@ -39,6 +42,7 @@ public class ReservationsFragment extends Fragment implements AdapterCategoryInt
     private RecyclerView recyclerReservation;
     private ReservationAdapter adapter;
     private ProgressBar progressBar;
+    private TextView noData;
     private int cardClickPosition;
 
     @Override
@@ -60,7 +64,7 @@ public class ReservationsFragment extends Fragment implements AdapterCategoryInt
         initListener();
 
         showProgress();
-        reservationModelView.getAllReservation("KJXcvf29fuPZSYzAYX0k");
+        reservationModelView.getAllReservation(currentUser.getData().id);
     }
 
     private void initListener() {
@@ -98,17 +102,19 @@ public class ReservationsFragment extends Fragment implements AdapterCategoryInt
 
     private void setUpAdapter() {
         if (rserveationList.size() > 0) {
+            noData.setVisibility(View.GONE);
             adapter = new ReservationAdapter(getContext(), this);
             adapter.setData(rserveationList);
             recyclerReservation.setAdapter(adapter);
 
         } else {
-            Toast.makeText(getContext(), "No Data.", Toast.LENGTH_SHORT).show();
+            noData.setVisibility(View.VISIBLE);
         }
     }
 
     private void initView(View view) {
         progressBar = view.findViewById(R.id.progress_bar);
+        noData = view.findViewById(R.id.noData);
         recyclerReservation = view.findViewById(R.id.recycler_reservation);
         recyclerReservation.setHasFixedSize(true);
         recyclerReservation.setLayoutManager(new LinearLayoutManager(getContext()));

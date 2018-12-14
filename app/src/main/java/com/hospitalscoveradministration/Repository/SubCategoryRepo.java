@@ -3,6 +3,7 @@ package com.hospitalscoveradministration.Repository;
 
 
 import com.hospitalscoveradministration.Model.SubCategory;
+import com.hospitalscoveradministration.webServicse.ResourseResponse;
 import com.hospitalscoveradministration.webServicse.SubCategoryWebService;
 
 import io.reactivex.Observable;
@@ -73,6 +74,38 @@ public class SubCategoryRepo {
             }
         });
 
+    }
+    public Observable<ResourseResponse> getResourse(String hospitalId,String subCategoryId){
+
+        return Observable.create(new ObservableOnSubscribe<ResourseResponse>() {
+            @Override
+            public void subscribe(ObservableEmitter<ResourseResponse> emitter) throws Exception {
+                subCategoryWebService.getResourse(hospitalId,subCategoryId).subscribeOn(Schedulers.io()).observeOn(Schedulers.io())
+                        .subscribe(new Observer<ResourseResponse>() {
+                            @Override
+                            public void onSubscribe(Disposable d) {
+
+                            }
+
+                            @Override
+                            public void onNext(ResourseResponse value) {
+                                emitter.onNext(value);
+
+                            }
+
+                            @Override
+                            public void onError(Throwable e) {
+                                e.printStackTrace();
+                                emitter.onNext(null);
+                            }
+
+                            @Override
+                            public void onComplete() {
+
+                            }
+                        });
+            }
+        });
     }
 
 

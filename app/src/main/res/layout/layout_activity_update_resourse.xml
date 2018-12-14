@@ -208,8 +208,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:padding="8dp"
-                    android:text="/ Hours" />
-
+                    android:text="Hours" />
 
 
             </LinearLayout>

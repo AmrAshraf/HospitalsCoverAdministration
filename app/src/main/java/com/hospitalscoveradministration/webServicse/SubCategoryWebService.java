@@ -16,6 +16,9 @@ public interface SubCategoryWebService {
    // @Headers({"Authorization"})
     Observable<SubCategory> getAllSubCategory(@Query("categoryId") String id);
 
+    @GET("Hospital-getHospitalResources/?")
+    Observable<ResourseResponse> getResourse(@Query("hospitalId")String hospitalId,@Query("subCategoryId")String subCategoryId);
+
 
 
 }

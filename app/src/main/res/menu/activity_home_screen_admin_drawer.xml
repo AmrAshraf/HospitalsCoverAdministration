@@ -4,14 +4,15 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/basic_data"
-            android:title="Hospital Information" />
+
+
         <item
             android:id="@+id/resources"
+            android:icon="@drawable/resource_icon"
             android:title="Resources" />
         <item
             android:id="@+id/reservations"
+            android:icon="@drawable/reservation_icon"
             android:title="Reservations" />
 
     </group>
@@ -19,7 +20,3 @@
 </menu>
 
 
-    <!--
-    <item android:title="Communicate">
-
-        -->
