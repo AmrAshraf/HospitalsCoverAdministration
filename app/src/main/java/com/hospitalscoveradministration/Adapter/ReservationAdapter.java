@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.hospitalscoveradministration.Interfaces.AdapterCategoryInterface;
-import com.hospitalscoveradministration.Model.CategoryData;
+
 import com.hospitalscoveradministration.Model.ReservationData;
 import com.hospitalscoveradministration.R;
 

@@ -1,15 +1,7 @@
 package com.hospitalscoveradministration.Repository;
 
-import com.hospitalscoveradministration.Model.Category;
-import com.hospitalscoveradministration.Model.Reservation;
-import com.hospitalscoveradministration.webServicse.CategoryWebService;
+import com.hospitalscoveradministration.webServicse.ReservationWebService;
 
-import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
-import io.reactivex.ObservableOnSubscribe;
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -41,35 +33,5 @@ private static class Loader {
     // all function that connect to api "end Point "
 
 
-    public Observable<Category> getAllReservation() {
-        return Observable.create(new ObservableOnSubscribe<Category>() {
-            @Override
-            public void subscribe(ObservableEmitter<Category> emitter) throws Exception {
-                reservation.getAllReservation().subscribeOn(Schedulers.io()).subscribeOn(Schedulers.io()).subscribe(new Observer<Reservation>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
 
-                    }
-
-                    @Override
-                    public void onNext(Reservation value) {
-                        emitter.onNext(value);
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        e.printStackTrace();
-                        emitter.onNext(null);
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
-
-            }
-        });
-
-    }
 }

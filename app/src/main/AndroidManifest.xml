@@ -41,14 +41,7 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".View.HomePage" />
         <activity android:name=".View.activity_login" />
-        <activity
-            android:name=".View.SubCategory"
-            android:parentActivityName=".View.HomePage" />
-        <activity
-            android:name=".View.ResultActiviyt"
-            android:parentActivityName=".View.SubCategory" />
         <activity
             android:name=".View.HomeScreenAdmin"
             android:label="@string/title_activity_home_screen_admin"
