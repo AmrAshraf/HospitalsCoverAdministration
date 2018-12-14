@@ -17,9 +17,7 @@ import com.hospitalscoveradministration.R;
 public class HomeScreenAdmin extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    final String basicDataTag="basicData";
-    final String reservationsTag="reservations";
-    final String resourcesTag="resources";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +35,8 @@ public class HomeScreenAdmin extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        addFragment(new ReservationsFragment(),reservationsTag);
+        ReservationsFragment reservationsFragment=new ReservationsFragment();
+        addFragment(reservationsFragment,reservationsFragment.reservationsTag);
     }
 
     @Override
@@ -58,11 +57,14 @@ public class HomeScreenAdmin extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.basic_data) {
-            // Handle the camera action
+            BasicDataFragment  basicDataFragment=new BasicDataFragment();
+            addFragment(basicDataFragment,basicDataFragment.basicDataTag);
         } else if (id == R.id.resources) {
-
+            ResourcesFragment resourcesFragment=new ResourcesFragment();
+            addFragment(resourcesFragment,resourcesFragment.resourcesTag);
         } else if (id == R.id.reservations) {
-
+            ReservationsFragment reservationsFragment=new ReservationsFragment();
+            addFragment(reservationsFragment,reservationsFragment.reservationsTag);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -73,7 +75,7 @@ public class HomeScreenAdmin extends AppCompatActivity
     private void addFragment(Fragment fragment, String tag)
     {
         getSupportFragmentManager().beginTransaction().replace(R.id.navigationFragment,fragment)
-        .addToBackStack(tag);
+        .commit();
     }
     private void popFragment()
     {
