@@ -17,7 +17,7 @@ import com.hospitalscoveradministration.R;
 
 public class HomeScreenAdmin extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    public static User currentUser;
+    public static User currentUser=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +39,8 @@ public class HomeScreenAdmin extends AppCompatActivity
         ReservationsFragment reservationsFragment = new ReservationsFragment();
         addFragment(reservationsFragment, reservationsFragment.reservationsTag);
 
-        currentUser = (User) getIntent().getSerializableExtra("user");
+        if(currentUser==null)
+            currentUser = (User) getIntent().getSerializableExtra("user");
 
 
     }
