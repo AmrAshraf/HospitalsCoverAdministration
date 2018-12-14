@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".View.SubCategory">
+    tools:context=".View.SubCategoryActivity"
+  >
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -78,7 +79,7 @@
         android:layout_centerVertical="true"
         android:indeterminate="true"
         android:theme="@style/progress"
-        android:visibility="visible"
+        android:visibility="gone"
 
         />
 

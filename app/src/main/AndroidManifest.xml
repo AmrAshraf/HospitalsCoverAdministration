@@ -45,7 +45,9 @@
         <activity
             android:name=".View.HomeScreenAdmin"
             android:label="@string/title_activity_home_screen_admin"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".View.SubCategoryActivity" />
+        <activity android:name=".View.UpdateResourseActivity"></activity>
     </application>
 
 </manifest>

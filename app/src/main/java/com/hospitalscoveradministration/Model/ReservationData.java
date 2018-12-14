@@ -4,60 +4,33 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class ReservationData {
-    @SerializedName("reservationID")
+    @SerializedName("categoryId")
     @Expose
-    private String id;
-    @SerializedName("categoryIcon")
+    public String categoryId;
+    @SerializedName("hospitalResourceId")
     @Expose
-    private String icon;
-    @SerializedName("categoryName")
+    public String hospitalResourceId;
+    @SerializedName("availabilityTime")
     @Expose
-    private String name;
-
-    public String getSubname() {
-        return subname;
-    }
-
-    public void setSubname(String subname) {
-        this.subname = subname;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    @SerializedName("subCategoryName")
+    public Integer availabilityTime;
+    @SerializedName("id")
     @Expose
-    private String subname;
-    public String getId() {
-        return id;
-    }
-
-    @SerializedName("reservationPhone")
+    public String id;
+    @SerializedName("createdAt")
     @Expose
-    private String phone;
+    public String createdAt;
+    @SerializedName("macAddress")
+    @Expose
+    public String macAddress;
+    @SerializedName("phone")
+    @Expose
+    public String phone;
+    @SerializedName("hospitalId")
+    @Expose
+    public String hospitalId;
+    @SerializedName("subCategoryId")
+    @Expose
+    public String subCategoryId;
 
-    public String getPhone() {
-        return phone;
-    }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getIcon() {
-        return icon;
-    }
-
-    public void setIcon(String icon) {
-        this.icon = icon;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }
