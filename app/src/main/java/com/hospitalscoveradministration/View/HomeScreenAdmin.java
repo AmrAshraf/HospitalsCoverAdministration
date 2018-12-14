@@ -12,11 +12,12 @@ import android.support.v7.widget.Toolbar;
 
 import android.view.MenuItem;
 
+import com.hospitalscoveradministration.Model.User;
 import com.hospitalscoveradministration.R;
 
 public class HomeScreenAdmin extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    public static User currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +36,12 @@ public class HomeScreenAdmin extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        ReservationsFragment reservationsFragment=new ReservationsFragment();
-        addFragment(reservationsFragment,reservationsFragment.reservationsTag);
+        ReservationsFragment reservationsFragment = new ReservationsFragment();
+        addFragment(reservationsFragment, reservationsFragment.reservationsTag);
+
+        currentUser = (User) getIntent().getSerializableExtra("user");
+
+
     }
 
     @Override
@@ -57,14 +62,14 @@ public class HomeScreenAdmin extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.basic_data) {
-            BasicDataFragment  basicDataFragment=new BasicDataFragment();
-            addFragment(basicDataFragment,basicDataFragment.basicDataTag);
+            BasicDataFragment basicDataFragment = new BasicDataFragment();
+            addFragment(basicDataFragment, basicDataFragment.basicDataTag);
         } else if (id == R.id.resources) {
-            ResourcesFragment resourcesFragment=new ResourcesFragment();
-            addFragment(resourcesFragment,resourcesFragment.resourcesTag);
+            ResourcesFragment resourcesFragment = new ResourcesFragment();
+            addFragment(resourcesFragment, resourcesFragment.resourcesTag);
         } else if (id == R.id.reservations) {
-            ReservationsFragment reservationsFragment=new ReservationsFragment();
-            addFragment(reservationsFragment,reservationsFragment.reservationsTag);
+            ReservationsFragment reservationsFragment = new ReservationsFragment();
+            addFragment(reservationsFragment, reservationsFragment.reservationsTag);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -72,15 +77,14 @@ public class HomeScreenAdmin extends AppCompatActivity
         return true;
     }
 
-    private void addFragment(Fragment fragment, String tag)
-    {
-        getSupportFragmentManager().beginTransaction().replace(R.id.navigationFragment,fragment)
-        .commit();
+    private void addFragment(Fragment fragment, String tag) {
+        getSupportFragmentManager().beginTransaction().replace(R.id.navigationFragment, fragment)
+                .commit();
     }
-    private void popFragment()
-    {
+
+    private void popFragment() {
         getSupportFragmentManager().popBackStackImmediate();
-        if(getSupportFragmentManager().getBackStackEntryCount()==0)
+        if (getSupportFragmentManager().getBackStackEntryCount() == 0)
             finish();
     }
 
