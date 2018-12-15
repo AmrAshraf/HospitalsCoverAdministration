@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.hospitalscoveradministration.Model.User;
 import com.hospitalscoveradministration.R;
 
@@ -24,7 +25,9 @@ public class HomeScreenAdmin extends AppCompatActivity
 
     public static User currentUser=null;
 
-
+    void subscribeToTopic(String hospitalID) {
+        FirebaseMessaging.getInstance().subscribeToTopic(hospitalID);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,14 +54,15 @@ public class HomeScreenAdmin extends AppCompatActivity
         addFragment(reservationsFragment, reservationsFragment.reservationsTag);
 
 
-        currentUser = (User) getIntent().getSerializableExtra("user");
-        hospital_name_nav.setText(currentUser.getData().name);
-        hospital_email_nav.setText(currentUser.getData().name + "@gmail.com");
+
+
 
         if(currentUser==null)
             currentUser = (User) getIntent().getSerializableExtra("user");
 
-
+        subscribeToTopic(currentUser.getData().id);
+        hospital_name_nav.setText(currentUser.getData().name);
+        hospital_email_nav.setText(currentUser.getData().name + "@gmail.com");
 
     }
 

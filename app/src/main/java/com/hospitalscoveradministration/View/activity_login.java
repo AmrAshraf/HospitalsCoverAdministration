@@ -19,6 +19,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.gson.Gson;
 import com.hospitalscoveradministration.FireBase.MyFirebaseMessagingService;
 import com.hospitalscoveradministration.Model.User;
@@ -37,15 +38,8 @@ public class activity_login extends AppCompatActivity {
     final private String MY_PREFS_NAME="user";
     final private String MY_PREFS_KEY="id";
     private SharedPreferences prefs;
-    void subscribeToTopic(String hospitalID) {
-        MyFirebaseMessagingService myFirebaseMessagingService = new MyFirebaseMessagingService();
-    }
-    private void showProgress() {
-        progressBar.setVisibility(View.VISIBLE);
-    }
-    private void hideProgress() {
-        progressBar.setVisibility(View.GONE);
-    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +56,8 @@ public class activity_login extends AppCompatActivity {
             UserData userData=gson.fromJson(jsonString, UserData.class);
             HomeScreenAdmin.currentUser=new User();
             HomeScreenAdmin.currentUser.setData(userData);
+            Intent intent = new Intent(activity_login.this, HomeScreenAdmin.class);
+            startActivity(intent);
             finish();
             /*
             showProgress();
@@ -131,7 +127,7 @@ public class activity_login extends AppCompatActivity {
             @Override
             public void onChanged(@Nullable User user) {
                 if (user != null) {
-                    subscribeToTopic(user.getData().id);
+
                     SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
                     Gson gson=new Gson();
                     editor.putString("json", gson.toJson(user.getData()));
@@ -146,5 +142,11 @@ public class activity_login extends AppCompatActivity {
                 }
             }
         });
+    }
+    private void showProgress() {
+        progressBar.setVisibility(View.VISIBLE);
+    }
+    private void hideProgress() {
+        progressBar.setVisibility(View.GONE);
     }
 }

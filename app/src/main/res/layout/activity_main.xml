@@ -8,14 +8,31 @@
     android:background="@drawable/gradient_splash_screen"
     >
 
-    <ImageView
-        android:id="@+id/splashLogo"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:alpha="0.7"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/logo2"
+        app:layout_constraintBottom_toTopOf="@+id/appCompatImageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/hospital2" />
+        app:layout_constraintVertical_bias="0.659" />
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/appCompatImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="124dp"
+        android:src="@drawable/hospitalscoverwhite"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
